@@ -1,0 +1,134 @@
+{
+  "name": "timmi-commit",
+  "displayName": "Timmi Commit",
+  "description": "Après chaque commit, copie le ticket Jira (TEAM-1234) dans le presse-papier et ouvre la saisie des temps Timmi.",
+  "version": "0.1.0",
+  "publisher": "safti",
+  "license": "UNLICENSED",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "SCM Providers"
+  ],
+  "keywords": [
+    "timmi",
+    "lucca",
+    "jira",
+    "timesheet",
+    "git"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "timmiCommit.openTimmi",
+        "title": "Timmi : copier le ticket du dernier commit et ouvrir la saisie"
+      }
+    ],
+    "configuration": {
+      "title": "Timmi Commit",
+      "properties": {
+        "timmiCommit.enabled": {
+          "type": "boolean",
+          "default": true,
+          "order": 0,
+          "description": "Activer l'ouverture de Timmi après chaque commit."
+        },
+        "timmiCommit.team": {
+          "type": "string",
+          "default": "EPSILON",
+          "enum": [
+            "ALPHA",
+            "BETA",
+            "DELTA",
+            "EPSILON",
+            "GAMMA",
+            "LAMBDA",
+            "AUTRE",
+            "TOUTES"
+          ],
+          "enumDescriptions": [
+            "Tickets ALPHA-1234",
+            "Tickets BETA-1234",
+            "Tickets DELTA-1234",
+            "Tickets EPSILON-1234",
+            "Tickets GAMMA-1234",
+            "Tickets LAMBDA-1234",
+            "Utiliser le champ libre « Équipe personnalisée »",
+            "N'importe quel ticket au format XXX-1234"
+          ],
+          "order": 1,
+          "description": "Votre équipe : préfixe du ticket Jira à rechercher dans le message de commit."
+        },
+        "timmiCommit.customTeam": {
+          "type": "string",
+          "default": "",
+          "order": 2,
+          "markdownDescription": "Préfixe de ticket libre (ex. `OMEGA`). Utilisé uniquement si **Équipe** vaut `AUTRE`."
+        },
+        "timmiCommit.browser": {
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "default",
+            "firefox",
+            "chrome",
+            "chromium",
+            "edge",
+            "brave",
+            "custom"
+          ],
+          "enumDescriptions": [
+            "Navigateur par défaut du système",
+            "Mozilla Firefox",
+            "Google Chrome",
+            "Chromium",
+            "Microsoft Edge",
+            "Brave",
+            "Exécutable défini dans « Chemin du navigateur »"
+          ],
+          "order": 3,
+          "description": "Navigateur utilisé pour ouvrir Timmi."
+        },
+        "timmiCommit.browserPath": {
+          "type": "string",
+          "default": "",
+          "order": 4,
+          "markdownDescription": "Chemin ou commande du navigateur (ex. `/usr/bin/vivaldi`). Utilisé uniquement si **Navigateur** vaut `custom`."
+        },
+        "timmiCommit.url": {
+          "type": "string",
+          "default": "https://safti.ilucca.net/timmi-timesheet/submission",
+          "order": 5,
+          "description": "URL de la page de saisie des temps."
+        },
+        "timmiCommit.searchBranchName": {
+          "type": "boolean",
+          "default": true,
+          "order": 6,
+          "description": "Si aucun ticket n'est trouvé dans le message de commit, le chercher dans le nom de la branche."
+        },
+        "timmiCommit.askBeforeOpening": {
+          "type": "boolean",
+          "default": false,
+          "order": 7,
+          "description": "Demander confirmation (notification) avant d'ouvrir le navigateur au lieu de l'ouvrir directement."
+        },
+        "timmiCommit.openWithoutTicket": {
+          "type": "boolean",
+          "default": true,
+          "order": 8,
+          "description": "Ouvrir Timmi même si aucun numéro de ticket n'est trouvé."
+        }
+      }
+    }
+  }
+}
