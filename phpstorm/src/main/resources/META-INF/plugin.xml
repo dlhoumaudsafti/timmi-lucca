@@ -1,0 +1,37 @@
+<idea-plugin>
+  <id>com.safti.timmi-commit</id>
+  <name>Timmi Commit</name>
+  <vendor>SAFTI</vendor>
+
+  <description><![CDATA[
+    Timmi Commit : après chaque commit, copie le ticket Jira (TEAM-1234) dans le presse-papier
+    et ouvre la saisie des temps Timmi.
+  ]]></description>
+
+  <depends>com.intellij.modules.platform</depends>
+  <depends>Git4Idea</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceImplementation="com.safti.timmicommit.TimmiSettings"/>
+    <applicationConfigurable
+        parentId="tools"
+        id="com.safti.timmicommit.settings"
+        displayName="Timmi Commit"
+        instance="com.safti.timmicommit.TimmiConfigurable"/>
+    <notificationGroup id="Timmi Commit" displayType="BALLOON"/>
+  </extensions>
+
+  <projectListeners>
+    <listener class="com.safti.timmicommit.TimmiRepositoryListener"
+              topic="git4idea.repo.GitRepositoryChangeListener"/>
+  </projectListeners>
+
+  <actions>
+    <action id="timmiCommit.openTimmi"
+            class="com.safti.timmicommit.OpenTimmiAction"
+            text="Timmi : copier le ticket du dernier commit et ouvrir la saisie"
+            description="Copie le ticket Jira du dernier commit dans le presse-papier et ouvre Timmi">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+  </actions>
+</idea-plugin>

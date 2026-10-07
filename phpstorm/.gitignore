@@ -1,0 +1,11 @@
+.gradle/
+.intellijPlatform/
+.kotlin/
+build/classes/
+build/resources/
+build/tmp/
+build/generated/
+build/reports/
+build/libs/
+.idea/
+*.iml
