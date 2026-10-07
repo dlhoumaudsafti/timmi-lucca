@@ -77,3 +77,7 @@ Ou depuis VS Code : vue **Extensions** → rechercher « Timmi Commit » → rou
 ## Développer
 
 Ouvre ce dossier dans VS Code et appuie sur `F5`. Une seconde fenêtre VS Code (Extension Development Host) s'ouvre avec l'extension chargée. Les logs sont dans le panneau **Sortie** → canal « Timmi Commit ».
+
+## Licence
+
+MIT — voir le fichier `LICENSE`.
