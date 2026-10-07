@@ -88,7 +88,8 @@ function watchRepository(repo, context) {
     lastCommit = head.commit;
     lastBranch = head.name;
 
-    if (!previousCommit || head.name !== previousBranch || handledCommits.has(head.commit)) {
+    // previousCommit est vide pour le premier commit d'un dépôt (branche sans commit).
+    if (head.name !== previousBranch || handledCommits.has(head.commit)) {
       return;
     }
 
@@ -107,7 +108,9 @@ function watchRepository(repo, context) {
 }
 
 async function isNewLocalCommit(repo, commit, previousCommit) {
-  if (!commit.parents || !commit.parents.includes(previousCommit)) {
+  const parents = commit.parents || [];
+  const isChild = previousCommit ? parents.includes(previousCommit) : parents.length === 0;
+  if (!isChild) {
     return false;
   }
   const date = commit.commitDate || commit.authorDate;

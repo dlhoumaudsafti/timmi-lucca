@@ -2,7 +2,7 @@
   "name": "timmi-commit",
   "displayName": "Timmi Commit",
   "description": "Après chaque commit, copie le ticket Jira (TEAM-1234) dans le presse-papier et ouvre la saisie des temps Timmi.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "safti",
   "license": "UNLICENSED",
   "engines": {

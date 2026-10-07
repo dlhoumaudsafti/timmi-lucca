@@ -42,7 +42,7 @@ cd timmi-lucca
 npx @vscode/vsce package --allow-missing-repository
 ```
 
-Le fichier `timmi-commit-<version>.vsix` est créé dans le dossier (par exemple `timmi-commit-0.1.0.vsix`).
+Le fichier `timmi-commit-<version>.vsix` est créé dans le dossier (par exemple `timmi-commit-0.1.1.vsix`).
 
 Si tu modifies l'extension, augmente `version` dans `package.json` avant de recompiler.
 
@@ -51,7 +51,7 @@ Si tu modifies l'extension, augmente `version` dans `package.json` avant de reco
 En ligne de commande :
 
 ```bash
-code --install-extension timmi-commit-0.1.0.vsix
+code --install-extension timmi-commit-0.1.1.vsix
 ```
 
 Ou depuis VS Code : vue **Extensions** (`Ctrl+Shift+X`) → menu `…` en haut → **Installer à partir d'un VSIX…** → choisir le fichier `.vsix`.
